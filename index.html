@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lernova — Learn. Speak. Grow. An AI-powered English learning experience." />
+  <title>Lernova — Learn. Speak. Grow.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260923" />
+
+</head>
+
+
+<body>
+
+  <div id="wxo-chat-root"></div>
+
+  <script>
+    window.wxOConfiguration = {
+      orchestrationID:
+        "f637aff7fa6b4ec2bc3d73379091203c_e17b8765-1926-464d-abc7-a20b7c5c2e7b",
+
+      hostURL:
+        "https://au-syd.watson-orchestrate.cloud.ibm.com",
+
+      rootElementID:
+        "wxo-chat-root",
+
+      deploymentPlatform:
+        "ibmcloud",
+
+      crn:
+        "crn:v1:bluemix:public:watsonx-orchestrate:au-syd:a/f637aff7fa6b4ec2bc3d73379091203c:e17b8765-1926-464d-abc7-a20b7c5c2e7b::",
+
+      chatOptions: {
+        agentId:
+          "048a5b89-b3a1-4cbc-bfbf-bb628a50a04f"
+      }
+    };
+
+    setTimeout(function () {
+
+      const script = document.createElement("script");
+
+      script.src =
+        window.wxOConfiguration.hostURL +
+        "/wxochat/wxoLoader.js?embed=true";
+
+      script.addEventListener("load", function () {
+
+        console.log("IBM watsonx Orchestrate loader loaded.");
+
+        if (typeof wxoLoader !== "undefined") {
+          wxoLoader.init();
+          console.log("IBM watsonx Orchestrate initialized.");
+        } else {
+          console.error(
+            "wxoLoader is not available."
+          );
+        }
+
+      });
+
+      script.addEventListener("error", function () {
+
+        console.error(
+          "Failed to load IBM watsonx Orchestrate loader."
+        );
+
+      });
+
+      document.head.appendChild(script);
+
+    }, 0);
+  </script>
+
+
+  <!-- =====================================================
+       LERNOVA APPLICATION
+       ===================================================== -->
+
+  <div class="app-shell">
+
+
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">✦</div>
+        <div><strong>Lernova</strong><span>Learn. Speak. Grow.</span></div>
+      </div>
+      <nav class="nav">
+        <button class="nav-item active" data-section="home"><span>⌂</span> Home</button>
+        <button class="nav-item" data-section="vocabulary"><span>◈</span> Vocabulary</button>
+        <button class="nav-item" data-section="speaking"><span>◉</span> Speaking</button>
+        <button class="nav-item" data-section="conversation"><span>◌</span> Conversation</button>
+        <button class="nav-item" data-section="games"><span>◇</span> Games</button>
+        <button class="nav-item" data-section="progress"><span>↗</span> Progress</button>
+        <button class="nav-item" data-section="profile"><span>○</span> Profile</button>
+      </nav>
+      <div class="sidebar-tip">
+        <div>🌱</div><b>Small steps<br />make big progress!</b>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu">☰</button>
+      </header>
+
+      <section class="section active-section" id="home">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow">YOUR ENGLISH JOURNEY ✨</div>
+            <h1>Learn English.<br /><span>Build confidence.</span></h1>
+            <p>Practice vocabulary, speaking, conversations and games — all in one friendly learning space.</p>
+            <div class="hero-actions"><button class="primary" data-section-target="speaking">Start Speaking
+                <span>→</span></button><button class="ghost" data-section-target="vocabulary">Learn a Word</button>
+            </div>
+            <div class="hero-stats">
+              <div><b>7</b><span>Day streak 🔥</span></div>
+              <div><b>420</b><span>XP points ⭐</span></div>
+              <div><b>5</b><span>Badges 🏅</span></div>
+            </div>
+          </div>
+          <div class="hero-art">
+            <div class="orbit o1"></div>
+            <div class="orbit o2"></div>
+            <div class="spark s1">✦</div>
+            <div class="spark s2">✦</div>
+            <div class="robot">🤖</div>
+            <div class="book">📖</div>
+            <div class="hero-note">Better English<br /><b>Brighter future.</b></div>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card vocab-card">
+            <div class="card-top"><span class="round-icon">🔥</span><span class="pill new">NEW</span></div><small>WORD
+              OF THE DAY</small>
+            <h2 id="wordTitle">Resilient</h2>
+            <div class="pron">/rɪˈzɪliənt/ · adjective</div>
+            <p>Able to recover quickly from difficulties.</p>
+            <div class="example">“She is a <b>resilient</b> person who never gives up.”</div><button class="small-btn"
+              id="newWord">New Word →</button>
+          </article>
+          <article class="feature-card blue">
+            <div class="feature-icon">🎙️</div><small>SPEAKING PRACTICE</small>
+            <h2>Find your voice.</h2>
+            <p>Speak freely and get supportive AI feedback on grammar, vocabulary and fluency.</p><button
+              class="small-btn blue-btn" data-section-target="speaking">Start Speaking →</button>
+          </article>
+          <article class="feature-card green">
+            <div class="feature-icon">💬</div><small>AI CONVERSATION</small>
+            <h2>Talk naturally.</h2>
+            <p>Have realistic conversations with an AI coach and build everyday confidence.</p><button
+              class="small-btn green-btn" data-section-target="conversation">Start Chat →</button>
+          </article>
+        </div>
+
+        <div class="lower-grid">
+          <div class="panel">
+            <div class="panel-head">
+              <div><small>CONTINUE LEARNING</small>
+                <h3>Your learning path</h3>
+              </div><span>Today · 24 min</span>
+            </div>
+            <div class="progress-list">
+              <div><span>🎙️ Speaking</span><b>65%</b><i><em style="width:65%"></em></i></div>
+              <div><span>📚 Vocabulary</span><b>80%</b><i><em style="width:80%"></em></i></div>
+              <div><span>🎮 Games</span><b>40%</b><i><em style="width:40%"></em></i></div>
+            </div>
+          </div>
+          <div class="panel badges">
+            <div class="panel-head">
+              <div><small>ACHIEVEMENTS</small>
+                <h3>Your badges</h3>
+              </div><button class="link" data-section-target="progress">View all →</button>
+            </div>
+            <div class="badge-row"><span>🏆</span><span>🛡️</span><span>🌟</span><span>👑</span></div>
+            <p>Keep learning to unlock your next badge.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="vocabulary">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">VOCABULARY</div>
+            <h1>Grow your word power.</h1>
+            <p>Discover useful words and turn passive vocabulary into active vocabulary.</p>
+          </div>
+          <div class="level-selector">
+            <h3>Choose your level</h3>
+
+            <div class="level-buttons">
+              <button class="level-btn active" data-level="beginner">
+                🟢 Beginner
+              </button>
+
+              <button class="level-btn" data-level="intermediate">
+                🟡 Intermediate
+              </button>
+
+              <button class="level-btn" data-level="advanced">
+                🔴 Advanced
+              </button>
+            </div>
+          </div>
+
+          <button class="primary" id="vocabWord">
+            ✨ Give me a word
+          </button>
+        </div>
+
+        <div class="vocab-layout">
+          <div class="word-large"><span class="pill new">WORD OF THE DAY</span>
+            <h2 id="bigWord">Resilient</h2>
+            <div class="pron">/rɪˈzɪliənt/ · adjective</div>
+            <p class="meaning" id="meaning">—</p>
+            <div class="chips"><span>strong</span><span>determined</span><span>persistent</span></div>
+            <div class="example"><b>Example:</b> “The team stayed resilient after the setback.”</div>
+            <div class="challenge"><b>🎯 Your turn</b>
+              <p>Write your own sentence using <strong id="challengeWord">resilient</strong>.</p>
+              <textarea id="vocabularySentence" placeholder="Type your sentence here..." rows="5"></textarea>
+              <button class="primary" id="checkSentence">Check
+                sentence →</button>
+              <div id="sentenceResult"></div>
+            </div>
+          </div>
+          <div class="side-stack">
+            <div class="mini-panel">
+              <h3>Quick practice</h3><button>🧠 Practice Quiz <span>→</span></button><button>🃏 Flashcards
+                <span>→</span></button><button>🎮 Word Games <span>→</span></button>
+            </div>
+            <div class="quote-card">“A little progress each day adds up to big results.”<br /><span>🌱 Keep
+                going!</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="speaking">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">SPEAKING PRACTICE</div>
+            <h1>Find your voice.</h1>
+            <p>Choose a mode, speak naturally, and get clear AI feedback.</p>
+          </div>
+        </div>
+        <div class="speaking-layout">
+          <div class="speak-card">
+            <div class="mode-row"><button class="mode active">Free Speak</button><button
+                class="mode">Topic</button><button class="mode">Read & Speak</button></div>
+            <div class="topic-box"><span>💡 TOPIC</span>
+              <h2>“A goal I want to achieve this year”</h2>
+              <p>Speak about your goal, why it matters and how you plan to achieve it.</p>
+            </div>
+            <div class="timer"><strong id="timer">01:00</strong><span>Choose duration</span>
+              <div><button class="time active">1 min</button><button class="time">2 min</button><button class="time">3
+                  min</button><button class="time">5 min</button></div>
+              <div class="custom-time">
+                <input id="customTimeInput" type="number" min="1" max="90" value="1" placeholder="Custom" />
+                <button class="time custom-time-btn" id="setCustomTime">Set</button>
+              </div>
+            </div><button class="record" id="recordBtn"><span>🎙</span> Start Recording</button>
+            <p class="privacy">Your speech is converted to text for AI feedback.</p>
+          </div>
+          <div class="tips-panel">
+            <h3>💡 Speaking tips</h3>
+            <div>✓ Speak in short, clear sentences.</div>
+            <div>✓ Don’t worry about being perfect.</div>
+            <div>✓ Use new vocabulary when possible.</div>
+            <div>✓ Keep going if you make a mistake.</div>
+            <hr /><small>RECENT PRACTICE</small>
+            <p>🎙 Daily Conversation <b>Great</b></p>
+            <p>🎙 Topic: Travel <b>Good</b></p>
+            <p>🎙 Topic: Hobbies <b>Practice</b></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="conversation">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">AI CONVERSATION</div>
+            <h1>Talk naturally.</h1>
+            <p>Practice real-life English with your AI conversation partner.</p>
+          </div>
+        </div>
+        <div class="chat-wrap">
+          <div class="chat-head">
+            <div class="bot">🤖</div>
+            <div><b>Lernova Coach</b><small>● Online · Ready to practice</small></div><span>✨</span>
+          </div>
+          <div class="messages" id="messages"></div>
+          <div class="chat-input"><input id="chatInput" placeholder="Type your message..." /><button
+              id="sendChat">➤</button></div>
+        </div>
+      </section>
+
+      <section class="section" id="games">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">GAMES</div>
+            <h1>Make learning fun.</h1>
+            <p>Practice English through quick challenges and friendly games.</p>
+          </div>
+        </div>
+        <div class="games-grid">
+          <div class="game purple"><span>🃏</span>
+            <h3>Word Match</h3>
+            <p>Match words with their meanings.</p><button>Play →</button>
+          </div>
+          <div class="game blue-game"><span>🎙️</span>
+            <h3>Speaking Bee</h3>
+            <p>Speak the word correctly.</p><button>Play →</button>
+          </div>
+          <div class="game green-game"><span>🧩</span>
+            <h3>Sentence Builder</h3>
+            <p>Build perfect sentences.</p><button>Play →</button>
+          </div>
+          <div class="game pink"><span>🧠</span>
+            <h3>Memory Game</h3>
+            <p>Remember & repeat.</p><button>Play →</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="progress">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">PROGRESS</div>
+            <h1>Your growth, visualized.</h1>
+            <p>Track consistency and celebrate every small win.</p>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div><span>⭐</span><b>420</b><small>Total XP</small></div>
+          <div><span>🔥</span><b>7</b><small>Day streak</small></div>
+          <div><span>🏅</span><b>5</b><small>Badges</small></div>
+          <div><span>📚</span><b>12</b><small>Words learned</small></div>
+        </div>
+        <div class="chart-panel">
+          <div class="panel-head">
+            <div><small>WEEKLY ACTIVITY</small>
+              <h3>Your learning progress</h3>
+            </div>
+            <div class="chart-tabs"><button class="active">Weekly</button><button>Monthly</button></div>
+          </div>
+          <div class="fake-chart">
+            <div class="y-labels"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div><svg
+              viewBox="0 0 700 250" preserveAspectRatio="none">
+              <polyline points="0,190 100,150 200,165 300,105 400,125 500,80 600,95 700,45" fill="none"
+                stroke="currentColor" stroke-width="4" />
+              <polyline points="0,210 100,180 200,190 300,160 400,170 500,135 600,150 700,110" fill="none"
+                stroke="currentColor" stroke-width="3" opacity=".35" />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="profile">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">PROFILE</div>
+            <h1>Your learning space.</h1>
+            <p>Set goals and keep your motivation close.</p>
+          </div><button class="ghost">Edit Profile</button>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-card">
+            <div class="avatar">M</div>
+            <h2>Mounika</h2>
+            <p>English Learner</p>
+            <div class="profile-stats">
+              <div><b>420</b><small>XP</small></div>
+              <div><b>7</b><small>Streak</small></div>
+              <div><b>12</b><small>Words</small></div>
+            </div>
+          </div>
+          <div class="goals">
+            <div class="panel-head">
+              <div><small>MY GOALS</small>
+                <h3>Keep moving forward</h3>
+              </div>
+            </div>
+            <div class="goal"><span>🎙️</span>
+              <div><b>Improve speaking skills</b><small>Practice 10 min every day</small></div><i>✓</i>
+            </div>
+            <div class="goal"><span>📖</span>
+              <div><b>Learn 50 new words</b><small>12 of 50 completed</small></div><i>24%</i>
+            </div>
+            <div class="goal"><span>💬</span>
+              <div><b>Have 10 AI conversations</b><small>4 of 10 completed</small></div><i>40%</i>
+            </div>
+          </div>
+        </div>
+        <div class="panel completed-words-panel">
+          <div class="panel-head">
+            <div>
+              <small>VOCABULARY</small>
+              <h3>Completed words</h3>
+            </div>
+            <strong id="profileCompletedCount">0 words</strong>
+          </div>
+          <div id="profileCompletedWords">
+            <p>No completed words yet. Complete a vocabulary sentence to see it here.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast">Nice! Your practice is ready ✨</div>
+
+  <script src="script.js?v=20260923"></script>
+  <script src="vocabulary.js?v=20260923"></script>
+  <script src="speaking.js?v=20260923"></script>
+  <script src="conversation.js?v=20260923"></script>
+</body>
+
+</html>
